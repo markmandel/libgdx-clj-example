@@ -7,4 +7,4 @@
     "Run the game"
     [& args]
     (println "Hello, World!")
-    (LwjglApplication. (example.core.Game. ) 600 600))
+    (LwjglApplication. (example.core.Game.) "Example Clojure" 600 600))
