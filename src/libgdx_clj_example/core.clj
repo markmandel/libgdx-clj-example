@@ -1,7 +1,7 @@
 (ns libgdx-clj-example.core
     (:gen-class)
-    (:require [libgdx-clj-example.game])
-    (:import (com.badlogic.gdx.backends.lwjgl LwjglApplication)))
+    (:require [libgdx-clj-example.game :as g])
+    (:import [com.badlogic.gdx.backends.lwjgl LwjglApplication]))
 
 (defn -main
     "Run the game"
