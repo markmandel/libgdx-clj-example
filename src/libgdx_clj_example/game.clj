@@ -8,7 +8,17 @@
 (defn create-screen
     "Make a screen"
     []
-    (ScreenAdapter.))
+    (proxy [Screen] []
+        (show [])
+        (render [delta])
+        (dispose[])
+        (hide [])
+        (pause [])
+        (resize [w h]
+            (println "Resize! " w " x " h))
+        (resume [])))
+
+;; Game class methods
 
 (defn game-create
     "Create method for a Game"
