@@ -14,4 +14,7 @@
 
     :aot :all
     :main libgdx-clj-example.core
-    :profiles {})
+    :profiles {:dev {:dependencies [[org.clojure/tools.namespace "0.2.4"]
+                                    [org.clojure/tools.trace "0.7.8"]]
+                     :source-paths ["dev"]
+                     :repl-options {:init-ns user}}})
