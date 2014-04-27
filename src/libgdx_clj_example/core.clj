@@ -1,7 +1,10 @@
 (ns libgdx-clj-example.core
-  (:gen-class))
+    (:gen-class)
+    (:require [libgdx-clj-example.game])
+    (:import (com.badlogic.gdx.backends.lwjgl LwjglApplication)))
 
 (defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
-  (println "Hello, World!"))
+    "Run the game"
+    [& args]
+    (println "Hello, World!")
+    (LwjglApplication. (example.core.Game. ) 600 600))
