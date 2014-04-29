@@ -1,7 +1,8 @@
 (ns libgdx-clj-example.game
     (:import [com.badlogic.gdx Game Screen ScreenAdapter Gdx]
              (com.badlogic.gdx.graphics GL20 OrthographicCamera Color)
-             (com.badlogic.gdx.graphics.glutils ShapeRenderer ShapeRenderer$ShapeType)))
+             (com.badlogic.gdx.graphics.glutils ShapeRenderer ShapeRenderer$ShapeType)
+             (com.badlogic.gdx.utils.viewport ScreenViewport)))
 
 (gen-class :name example.core.Game
            :extends com.badlogic.gdx.Game
@@ -22,24 +23,26 @@
         (.rect 50 50 50 50)
         (.end)))
 
-(defn- resize [w h]
-    (println "Resize! " w " x " h))
+(defn- resize [w h viewport]
+    (println "Resize! " w " x " h)
+    (.update viewport 600 600 true))
 
 (defn create-screen
     "Make a screen"
     []
-    (let [cam (OrthographicCamera. 600 600)
-          shapes (ShapeRenderer.)]
+    (let [cam (OrthographicCamera.)
+          shapes (ShapeRenderer.)
+          viewport (ScreenViewport. cam)]
         (proxy [Screen] []
             (show []
-                (.set (.position cam) 300 300 0))
+                (.update viewport 600 600 true))
             (render [delta]
                 (render cam shapes delta))
             (dispose [])
             (hide [])
             (pause [])
             (resize [w h]
-                (resize w h))
+                (resize w h viewport))
             (resume []))))
 
 ;; Game class methods
