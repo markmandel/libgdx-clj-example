@@ -25,7 +25,12 @@
 
 (defn- resize [w h viewport]
     (println "Resize! " w " x " h)
-    (.update viewport 600 600 true))
+    (.setUnitsPerPixel viewport 0.5)                        ;; double size
+    (.update viewport w h true)
+    (println "Viewport: " (.getViewportX viewport) " : " (.getViewportY viewport) ", "
+             (.getViewportWidth viewport) " x " (.getViewportHeight viewport))
+    (println "World: " (.getWorldWidth viewport) " x " (.getWorldHeight viewport)))
+
 
 (defn create-screen
     "Make a screen"
